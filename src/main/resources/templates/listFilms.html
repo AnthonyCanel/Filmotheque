@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body >
+
+<ul th:each="unFilm:${filmS}">
+	<li th:text="${unFilm.titre}"></li>
+</ul>
+
+
+</body>
+</html>
