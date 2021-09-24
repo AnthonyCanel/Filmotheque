@@ -2,15 +2,31 @@ package fr.eni.demoInjectionDependance.bo;
 
 import java.util.List;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 public class Film {
+	
 	private long id;
+	@NotBlank
+	@Size(min = 0, max = 20)
 	private String titre;
+	@Min(value=1900)
 	private int annee;
+	@Min(value=0)
+	@Max(value=3600)
 	private int duree;
+	@Size(min = 0, max = 5000)
 	private String synopsis;
+	@NotNull
 	private Participant realisateur;
+	@NotNull
 	private List<Participant> acteur;
+	@NotNull
 	private Genre genre;
+	@NotNull
 	private List<Avis> avis;
 	//controle
 	

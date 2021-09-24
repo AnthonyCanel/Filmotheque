@@ -4,21 +4,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body>
 <form  th:action="@{/film/ajouter}"  th:object=${film} method="POST">
+	<div th:if="${#fields.hasErros('*')} "></div>
+	<p th:text="#{index.erreurs}"> Message d'erreur</p>
+	
 	<label for="titre">Titre :</label>
 	<input type="text" id="titre" th:field="*{titre}"/>
+	<span class="help-block" th:if="${#fields.hasErrors('titre')}"></span>
 	
 	<br>
 	<label for="annee">Année :</label>
 	<input type="number" id="annee" th:field="*{annee}"/>
+	<span class="help-block" th:if="${#fields.hasErrors('annee')}"></span>
+	
 	<br>
 	<label for="duree">Durée :</label>
 	<input type="number" id="duree" th:field="*{duree}"/>
+	<span class="help-block" th:if="${#fields.hasErrors('duree')}"></span>	
+	
 	<br>
 	<label for="synopsis">Synopsis :</label>
 	<input type="text" id="synopsis" th:field="*{synopsis}"/>
+	<span class="help-block" th:if="${#fields.hasErrors('synopsis')}"></span>
+	
 	<br>
 	<input type="text" th:field="*{id}" />
 	<button>Ajouter</button>
