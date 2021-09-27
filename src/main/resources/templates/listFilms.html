@@ -5,11 +5,49 @@
 <title>Insert title here</title>
 </head>
 <body >
+<h1> Un tableau mieux qu'une puce :)</h1>
 
-<ul th:each="unFilm:${filmS}">
-	<li th:text="${unFilm.titre}"></li>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th colspan="9">Liste de films</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        	<td>Réf</td>
+            <td>Titre</td>
+            <td>Année</td>
+            <td>Durée</td>
+            <td>Genre</td>
+            <td>Avis</td>
+            <td>Synopsis</td>
+          	<td>Réalisateur</td>
+            <td>Acteurs</td>
+        </tr>
+        <tr th:each="film:${listFilm}" >
+                	<td>Réf</td>
+<!--         	<a th:href="@{/{film.id}}"> -->
+        	<td th:text="${film.titre}"></td>
+<!--         	</a> -->
+        	<td th:text="${film.annee}"></td>
+        	<td th:text="${film.duree}"></td>
+        	<td th:text="${film.genre.libelle}"></td>
+            <td th:text="${film.avis}"></td>
+        	<td>Avis</td>
+            <td>Synopsis</td>
+          	<td>Réalisateur</td>
+            <td>Acteurs</td>
+        	
+        </tr>
+    </tbody>
+</table>
 
+
+<!-- <ul th:each="unFilm:${listFilm}"> -->
+<!-- 	<li th:text="${unFilm.titre}"></li> -->
+<!-- </ul> -->
+<a th:href="@{/film/ajouter}">Ajouter un film</a>
 
 </body>
 </html>

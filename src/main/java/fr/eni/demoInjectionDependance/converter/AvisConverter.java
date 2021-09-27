@@ -1,23 +1,35 @@
 package fr.eni.demoInjectionDependance.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.fasterxml.jackson.databind.util.Converter;
+
 import fr.eni.demoInjectionDependance.bo.Avis;
-import fr.eni.demoInjectionDependance.services.ManagerBllService;
+import fr.eni.demoInjectionDependance.dal.Repository;
 
 @Component
 public class AvisConverter implements Converter<String, Avis>{
-    private ManagerBllService<Avis> serviceAvis;
-	
-	@Autowired
-	public void setMetierService(ManagerBllService<Avis> serviceAvis) {
-		this.serviceAvis = serviceAvis;
-	}
+    @Autowired
+    private Repository repository;
 	
 	@Override
 	public Avis convert(String id) {
 		Integer theid = Integer.parseInt(id);
-		return serviceAvis.getMap().get(theid);
+		return repository.getListAvis().get(theid);
+	}
+
+	@Override
+	public JavaType getInputType(TypeFactory typeFactory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public JavaType getOutputType(TypeFactory typeFactory) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

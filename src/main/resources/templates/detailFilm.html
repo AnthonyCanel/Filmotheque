@@ -8,27 +8,34 @@
 <table>
     <thead>
         <tr>
-            <th colspan="2">The table header</th>
+            <th colspan="8">Detail d'un film</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-
             <td>Titre</td>
             <td>Annee</td>          
             <td>Duree</td>
-            <td>Synopsis</td>            
+            <td>Genre</td>  
+            <td>Avis</td>
+            <td>Synopsis</td>          
+            <td>Realisateur</td>
+            <td>Acteurs</td>           
         </tr>
         <tr th:object=${film}>
-
-            <td th:text="*{titre}">Titre</td>
-            <td th:text="*{annee}">Annee</td>          
-            <td th:text="*{duree}">Duree</td>
-            <td th:text="*{synopsis}">Synopsis</td>            
+        	<td th:text="$*{titre}"></td>
+        	<td th:text="$*{annee}"></td>
+        	<td th:text="$*{duree}"></td>
+        	<td th:text="$*{genre}"></td>
+        	<td th:text="$*{avis}"></td>
+        	<td th:text="$*{synopsis}"></td>        
+        	<td th:text="$*{realisateur}"></td>
+        	<td th:text="$*{acteurs}"></td>           
         </tr>
     </tbody>
     
     <button th:href="@{/ajouter">Ajouter Film</button>
 </table>
+<a th:href="@{/film}">Liste de films</a>
 </body>
 </html>

@@ -2,36 +2,50 @@ package fr.eni.demoInjectionDependance.bo;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+@Entity
 public class Film {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+
+
 	@NotBlank
 	@Size(min = 0, max = 20)
 	private String titre;
+	
 	@Min(value=1900)
 	private int annee;
+
 	@Min(value=0)
 	@Max(value=3600)
 	private int duree;
+	
 	@Size(min = 0, max = 5000)
 	private String synopsis;
+	
 	@NotNull
 	private Participant realisateur;
-	@NotNull
+
 	private List<Participant> acteur;
+	
 	@NotNull
 	private Genre genre;
-	@NotNull
+
 	private List<Avis> avis;
 	//controle
 	
 	public Film() {
-		super();
+
 	}
 	
 	public Film(String titre, int annee, int duree, String synopsis) {
@@ -105,29 +119,29 @@ public class Film {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	public Participant getRealisateur() {
-		return realisateur;
-	}
-	public void setRealisateur(Participant realisateur) {
-		this.realisateur = realisateur;
-	}
-	public List<Participant> getActeur() {
-		return acteur;
-	}
-	public Genre getGenre() {
-		return genre;
-	}
-	public void setGenre(Genre genre) {
-		this.genre = genre;
-	}
-	public List<Avis> getAvis() {
-		return avis;
-	}
-	public void setAvis(List<Avis> avis) {
-		this.avis = avis;
-	}
-	public void setActeur(List<Participant> acteur) {
-		this.acteur = acteur;
-	}
+//	public Participant getRealisateur() {
+//		return realisateur;
+//	}
+//	public void setRealisateur(Participant realisateur) {
+//		this.realisateur = realisateur;
+//	}
+//	public List<Participant> getActeur() {
+//		return acteur;
+//	}
+//	public Genre getGenre() {
+//		return genre;
+//	}
+//	public void setGenre(Genre genre) {
+//		this.genre = genre;
+//	}
+//	public List<Avis> getAvis() {
+//		return avis;
+//	}
+//	public void setAvis(List<Avis> avis) {
+//		this.avis = avis;
+//	}
+//	public void setActeur(List<Participant> acteur) {
+//		this.acteur = acteur;
+//	}
 	
 }

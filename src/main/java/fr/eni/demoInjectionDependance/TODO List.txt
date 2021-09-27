@@ -1,0 +1,10 @@
+/*
+ * 1-creer la base de donnée => Anthony, on a pas accès à MySQL à distance
+ * 2-configuration de l'app
+ *  2.1 ajout des dépendances dans gradle
+ *      implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+ *    	runtimeOnly 'mysql:mysql-connector-java'
+ * 	2.2-configurer l'app (url, mdp, adresse BDD)
+ *      
+ * 2-
+ */
