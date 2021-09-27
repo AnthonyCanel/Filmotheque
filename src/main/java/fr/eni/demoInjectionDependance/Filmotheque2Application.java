@@ -10,8 +10,6 @@ public class Filmotheque2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Filmotheque2Application.class, args);
-
-
 	}
 
 }
