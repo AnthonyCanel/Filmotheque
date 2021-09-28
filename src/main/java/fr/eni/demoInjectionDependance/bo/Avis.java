@@ -1,11 +1,22 @@
 package fr.eni.demoInjectionDependance.bo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Avis {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@Size(min = 0, max = 5)
@@ -14,15 +25,13 @@ public class Avis {
 	@Size(min = 0, max = 5000)
 	private String commentaire;
 	@NotNull
+	@OneToOne(targetEntity = Film.class)
 	private Film film;
 	@NotNull
+	@OneToOne(targetEntity = Membre.class)
 	private Membre membre;
-	
-	
+
 	//contructeur
-	public Avis() {
-		super();
-	}
 	public Avis(int note, String commentaire, Film film, Membre membre) {
 		super();
 		this.note = note;
@@ -30,44 +39,4 @@ public class Avis {
 		this.film = film;
 		this.membre = membre;
 	}
-	public Avis(long id, int note, String commentaire, Film film, Membre membre) {
-		super();
-		this.id = id;
-		this.note = note;
-		this.commentaire = commentaire;
-		this.film = film;
-		this.membre = membre;
-	}
-	//getter&Setter
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public int getNote() {
-		return note;
-	}
-	public void setNote(int note) {
-		this.note = note;
-	}
-	public String getCommentaire() {
-		return commentaire;
-	}
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
-	public Film getFilm() {
-		return film;
-	}
-	public void setFilm(Film film) {
-		this.film = film;
-	}
-	public Membre getMembre() {
-		return membre;
-	}
-	public void setMembre(Membre membre) {
-		this.membre = membre;
-	}
-	
 }

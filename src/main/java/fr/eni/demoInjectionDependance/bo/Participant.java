@@ -19,7 +19,8 @@ public class Participant {
 	private long id;
 	private String nom;
 	private String prenom;
-	//contructeurs
+
+	//constructeurs personalisés
 	public Participant(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;

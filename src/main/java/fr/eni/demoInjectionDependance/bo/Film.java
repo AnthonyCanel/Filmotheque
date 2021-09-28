@@ -1,11 +1,12 @@
 package fr.eni.demoInjectionDependance.bo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -13,11 +14,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Film {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
 
 	@NotBlank
 	@Size(min = 0, max = 20)
@@ -34,20 +37,20 @@ public class Film {
 	private String synopsis;
 	
 	@NotNull
+	@ManyToOne(targetEntity = Participant.class)
 	private Participant realisateur;
 
+	@OneToMany(targetEntity = Participant.class)
 	private List<Participant> acteur;
 	
 	@NotNull
+	@ManyToOne (targetEntity = Genre.class)
 	private Genre genre;
 
+	@ManyToOne(targetEntity = Avis.class)
 	private List<Avis> avis;
 	//controle
-	
-	public Film() {
 
-	}
-	
 	public Film(String titre, int annee, int duree, String synopsis) {
 		super();
 		this.titre = titre;
@@ -76,72 +79,4 @@ public class Film {
 		this.genre = genre;
 		this.avis = avis;
 	}
-	public Film(long id, String titre, int annee, int duree, String synopsis, Participant realisateur,
-			List<Participant> acteur, Genre genre, List<Avis> avis) {
-		super();
-		this.id = id;
-		this.titre = titre;
-		this.annee = annee;
-		this.duree = duree;
-		this.synopsis = synopsis;
-		this.realisateur = realisateur;
-		this.acteur = acteur;
-		this.genre = genre;
-		this.avis = avis;
-	}
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getTitre() {
-		return titre;
-	}
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-	public int getAnnee() {
-		return annee;
-	}
-	public void setAnnee(int annee) {
-		this.annee = annee;
-	}
-	public int getDuree() {
-		return duree;
-	}
-	public void setDuree(int duree) {
-		this.duree = duree;
-	}
-	public String getSynopsis() {
-		return synopsis;
-	}
-	public void setSynopsis(String synopsis) {
-		this.synopsis = synopsis;
-	}
-//	public Participant getRealisateur() {
-//		return realisateur;
-//	}
-//	public void setRealisateur(Participant realisateur) {
-//		this.realisateur = realisateur;
-//	}
-//	public List<Participant> getActeur() {
-//		return acteur;
-//	}
-//	public Genre getGenre() {
-//		return genre;
-//	}
-//	public void setGenre(Genre genre) {
-//		this.genre = genre;
-//	}
-//	public List<Avis> getAvis() {
-//		return avis;
-//	}
-//	public void setAvis(List<Avis> avis) {
-//		this.avis = avis;
-//	}
-//	public void setActeur(List<Participant> acteur) {
-//		this.acteur = acteur;
-//	}
-	
 }
