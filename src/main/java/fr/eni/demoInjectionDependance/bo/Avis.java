@@ -25,13 +25,13 @@ public class Avis {
 	@Size(min = 0, max = 5000)
 	private String commentaire;
 	@NotNull
-	@OneToOne(targetEntity = Film.class)
+	@ManyToOne(targetEntity = Film.class)
 	private Film film;
 	@NotNull
 	@OneToOne(targetEntity = Membre.class)
 	private Membre membre;
 
-	//contructeur
+	//Contructeurs personalisé
 	public Avis(int note, String commentaire, Film film, Membre membre) {
 		super();
 		this.note = note;

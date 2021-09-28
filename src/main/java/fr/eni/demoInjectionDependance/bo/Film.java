@@ -35,22 +35,34 @@ public class Film {
 	
 	@Size(min = 0, max = 5000)
 	private String synopsis;
-	
-	@NotNull
-	@ManyToOne(targetEntity = Participant.class)
-	private Participant realisateur;
 
-	@OneToMany(targetEntity = Participant.class)
-	private List<Participant> acteur;
-	
+	//Un film est catégorisé par un genre
 	@NotNull
 	@ManyToOne (targetEntity = Genre.class)
 	private Genre genre;
 
-	@ManyToOne(targetEntity = Avis.class)
-	private List<Avis> avis;
-	//controle
+	//Un film est réalise par un seul participant (realisateur)
+	@NotNull
+	@ManyToOne(targetEntity = Participant.class)
+	private Participant realisateur;
 
+	//Un film est joue par pluseurs participants (acteurs)
+	@OneToMany(targetEntity = Participant.class,
+			mappedBy = "film",
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+	)
+	private List<Participant> acteurs;
+
+	//Un film peut avoir zero ou plusieurs avis
+	@OneToMany(targetEntity = Avis.class,
+			mappedBy = "film",
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+	)
+	private List<Avis> avis;
+
+	//controle
 	public Film(String titre, int annee, int duree, String synopsis) {
 		super();
 		this.titre = titre;
@@ -67,7 +79,7 @@ public class Film {
 		this.duree = duree;
 		this.synopsis = synopsis;
 	}
-	public Film(String titre, int annee, int duree, String synopsis, Participant realisateur, List<Participant> acteur,
+	public Film(String titre, int annee, int duree, String synopsis, Participant realisateur, List<Participant> acteurs,
 			Genre genre, List<Avis> avis) {
 		super();
 		this.titre = titre;
@@ -75,7 +87,7 @@ public class Film {
 		this.duree = duree;
 		this.synopsis = synopsis;
 		this.realisateur = realisateur;
-		this.acteur = acteur;
+		this.acteurs = acteurs;
 		this.genre = genre;
 		this.avis = avis;
 	}
