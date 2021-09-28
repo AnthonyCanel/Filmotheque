@@ -2,6 +2,7 @@ package fr.eni.demoInjectionDependance.controller;
 
 import javax.validation.Valid;
 
+import fr.eni.demoInjectionDependance.services.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +21,19 @@ import fr.eni.demoInjectionDependance.services.FilmService;
 @RequestMapping("/film")
 public class FilmController {
 
-	@Autowired
+	//Injection des services
 	private FilmService filmService;
-	
+	@Autowired
+	private void setFilmService(FilmService filmService){
+		this.filmService = filmService;
+	}
+	private ParticipantService participantService;
+	@Autowired
+	private void setParticipantService(ParticipantService participantService){
+		this.participantService = participantService;
+	}
+
+	//Méthodes d'accès au controlleur
 	@GetMapping("/ajouter")
 	public String ajouterFilm(Model modele) {
 		modele.addAttribute("film", new Film());

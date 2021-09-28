@@ -22,11 +22,11 @@ public class Repository {
     private List<Genre> listGenre = new ArrayList<>();
     private List<Membre> listMembre = new ArrayList<>();
     private List<Participant> listParticipant = new ArrayList<>();; 
-    //jeu de données de base
+    //jeu de donnees de base
     private Repository() {
     	
 
-    	Participant acteur0 = new Participant(0, "rose","panthère");
+    	Participant acteur0 = new Participant(0, "rose","panthere");
     	Participant acteur1 = new Participant(1, "bily","Petit");
     	Participant acteur2 = new Participant(2, "Azalet","la vache");
     	
@@ -43,7 +43,7 @@ public class Repository {
     	Membre membre1 = new Membre(1, "membre1", "prenom1", "login1", "pwd1", false);
     	Membre membre2 = new Membre(2, "membre2", "prenom2", "login2", "pwd2", false);
     
-    	Film film0 = new Film(0,"la cité de la peur", 1996, 90, "il film drôle fait par des nulls", realisateur,listParticipant,horror,null );
+    	Film film0 = new Film(0,"la cite de la peur", 1996, 90, "il film drole fait par des nulls", realisateur,listParticipant,horror,null );
     	Film film1 = new Film(0,"crack, Le film", 1901, 99, "il va faire crack", realisateur2,listParticipant,nanar,null );
 		
     	listParticipant.add(acteur0);
