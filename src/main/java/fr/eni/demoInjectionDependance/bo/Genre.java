@@ -14,7 +14,7 @@ public class Genre {
 	private long id;
 	private String libelle;
 
-	//constructeurs personalisés
+	//constructeurs personalises
 	public Genre(String libelle) {
 		super();
 		this.libelle = libelle;

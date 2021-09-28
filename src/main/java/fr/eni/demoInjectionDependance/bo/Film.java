@@ -36,12 +36,12 @@ public class Film {
 	@Size(min = 0, max = 5000)
 	private String synopsis;
 
-	//Un film est catégorisé par un genre
+	//Un film est categorise par un genre
 	@NotNull
 	@ManyToOne (targetEntity = Genre.class)
 	private Genre genre;
 
-	//Un film est réalise par un seul participant (realisateur)
+	//Un film est realise par un seul participant (realisateur)
 	@NotNull
 	@ManyToOne(targetEntity = Participant.class)
 	private Participant realisateur;

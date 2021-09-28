@@ -23,7 +23,7 @@ public class Membre {
 	private String pwd;
 	private boolean isAdmin;
 
-	//constructeurs personalisés
+	//constructeurs personalises
 	public Membre(String nom, String prenom, String login, String pwd, boolean isAdmin) {
 		this.nom = nom;
 		this.prenom = prenom;

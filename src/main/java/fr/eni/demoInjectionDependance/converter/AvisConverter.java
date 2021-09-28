@@ -1,5 +1,6 @@
 package fr.eni.demoInjectionDependance.converter;
 
+import fr.eni.demoInjectionDependance.dal.AvisDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +13,16 @@ import fr.eni.demoInjectionDependance.dal.Repository;
 
 @Component
 public class AvisConverter implements Converter<String, Avis>{
+	private AvisDao avisDao;
     @Autowired
-    private Repository repository;
+	private void setAvisDao(AvisDao avisDao){
+		this.avisDao = avisDao;
+	}
 	
 	@Override
 	public Avis convert(String id) {
-		Integer theid = Integer.parseInt(id);
-		return repository.getListAvis().get(theid);
+		Long theid = Long.parseLong(id);
+		return avisDao.getById(theid);
 	}
 
 	@Override

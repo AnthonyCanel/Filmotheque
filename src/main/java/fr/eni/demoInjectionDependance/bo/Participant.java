@@ -20,7 +20,7 @@ public class Participant {
 	private String nom;
 	private String prenom;
 
-	//constructeurs personalisés
+	//constructeurs personalises
 	public Participant(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;

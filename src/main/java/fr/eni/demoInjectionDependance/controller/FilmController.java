@@ -33,7 +33,7 @@ public class FilmController {
 		this.participantService = participantService;
 	}
 
-	//Méthodes d'accès au controlleur
+	//Methodes d'acces au controlleur
 	@GetMapping("/ajouter")
 	public String ajouterFilm(Model modele) {
 		modele.addAttribute("film", new Film());

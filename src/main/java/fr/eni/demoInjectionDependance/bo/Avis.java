@@ -31,7 +31,7 @@ public class Avis {
 	@OneToOne(targetEntity = Membre.class)
 	private Membre membre;
 
-	//Contructeurs personalisé
+	//Contructeurs personalise
 	public Avis(int note, String commentaire, Film film, Membre membre) {
 		super();
 		this.note = note;
