@@ -20,7 +20,7 @@ public class ParticipantService {
     //      ROOM => d'autres annotations
     private ParticipantDao participantDao;
     @Autowired
-    public ParticipantService(ParticipantDao participantDao) {
+    public void setParticipantDao(ParticipantDao participantDao) {
         this.participantDao = participantDao;
     }
 

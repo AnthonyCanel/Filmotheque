@@ -2,6 +2,7 @@ package fr.eni.demoInjectionDependance.controller;
 
 import javax.validation.Valid;
 
+import fr.eni.demoInjectionDependance.dal.GenreDao;
 import fr.eni.demoInjectionDependance.services.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,22 +28,33 @@ public class FilmController {
 	private void setFilmService(FilmService filmService){
 		this.filmService = filmService;
 	}
+
 	private ParticipantService participantService;
 	@Autowired
 	private void setParticipantService(ParticipantService participantService){
 		this.participantService = participantService;
 	}
 
+	private GenreDao genreDao;
+	@Autowired
+	private void setGenreDao(GenreDao genreDao){
+		this.genreDao = genreDao;
+	}
+
 	//Methodes d'acces au controlleur
 	@GetMapping("/ajouter")
 	public String ajouterFilm(Model modele) {
 		modele.addAttribute("film", new Film());
+		modele.addAttribute("participants", participantService.getAll());
+		modele.addAttribute("genres", genreDao.findAll());
 		return "ajouterFilm";
 	}
 	@PostMapping("/ajouter")
 	public String ajouterFilm(@Valid @ModelAttribute Film film, BindingResult result, Model modele ) {
 		if(result.hasErrors()){
-            modele.addAttribute("film", film);
+			modele.addAttribute("film", new Film());
+			modele.addAttribute("participants", participantService.getAll());
+			modele.addAttribute("genres", genreDao.findAll());
             return "ajouterFilm";
 		}else{
 		    filmService.add(film);
