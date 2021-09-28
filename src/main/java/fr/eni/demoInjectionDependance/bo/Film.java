@@ -46,14 +46,6 @@ public class Film {
 	@ManyToOne(targetEntity = Participant.class)
 	private Participant realisateur;
 
-	//Un film est joue par pluseurs participants (acteurs)
-	@OneToMany(targetEntity = Participant.class,
-			mappedBy = "film",
-			cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY
-	)
-	private List<Participant> acteurs;
-
 	//Un film peut avoir zero ou plusieurs avis
 	@OneToMany(targetEntity = Avis.class,
 			mappedBy = "film",
@@ -61,6 +53,16 @@ public class Film {
 			fetch = FetchType.LAZY
 	)
 	private List<Avis> avis;
+
+	//Un film est joue par pluseurs participants (acteurs) et les participants jouent dans plusieurs films
+	@ManyToMany(targetEntity = Participant.class,
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+	)
+	@JoinTable(name="film_acteur",
+			joinColumns = {@JoinColumn(name="film_id")},
+			inverseJoinColumns = {@JoinColumn(name="participant_id")})
+	private List<Participant> acteurs;
 
 	//controle
 	public Film(String titre, int annee, int duree, String synopsis) {
