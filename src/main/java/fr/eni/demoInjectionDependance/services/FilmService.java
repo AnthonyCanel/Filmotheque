@@ -8,11 +8,9 @@ import fr.eni.demoInjectionDependance.dal.FilmDao;
 import fr.eni.demoInjectionDependance.dal.GenreDao;
 import fr.eni.demoInjectionDependance.dal.ParticipantDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import fr.eni.demoInjectionDependance.bo.Film;
-import fr.eni.demoInjectionDependance.dal.Repository;
 
 @Service
 public class FilmService {
@@ -21,10 +19,6 @@ public class FilmService {
     Participant patWelsh = new Participant(2, "Welsh", "Pat");
     Participant henryThomas = new Participant(3, "Thomas", "Henry");
     Participant marylin = new Participant(4, "Monroe", "Marylin");
-    Participant tony = new Participant(5, "Curtis", "Tony");
-    Participant jack = new Participant(6, "Lemmon", "Jack");
-    Participant iti = new Participant(7, "Ti", "i");
-    Participant shirley = new Participant(8, "Shirley", "MacLane");
 
     Genre horreur = new Genre(0, "Horreur");
     Genre comedie = new Genre(1, "Comedie");

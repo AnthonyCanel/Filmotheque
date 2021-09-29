@@ -52,7 +52,7 @@ public class FilmController {
 	@PostMapping("/ajouter")
 	public String ajouterFilm(@Valid @ModelAttribute Film film, BindingResult result, Model modele ) {
 		if(result.hasErrors()){
-			modele.addAttribute("film", new Film());
+			modele.addAttribute("film", film);
 			modele.addAttribute("participants", participantService.getAll());
 			modele.addAttribute("genres", genreDao.findAll());
             return "ajouterFilm";

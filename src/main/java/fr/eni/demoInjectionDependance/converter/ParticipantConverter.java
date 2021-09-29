@@ -18,6 +18,7 @@ public class ParticipantConverter implements Converter<String, Participant>{
 	
 	@Override
 	public Participant convert(String id) {
+		System.out.println(id);
 		Long theid = Long.parseLong(id);
 		return participantDao.getById(theid);
 	}

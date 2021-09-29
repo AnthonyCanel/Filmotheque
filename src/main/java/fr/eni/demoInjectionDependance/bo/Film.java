@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -17,7 +19,7 @@ import javax.validation.constraints.Size;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Film {
+public class Film implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -52,21 +54,20 @@ public class Film {
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY
 	)
-	private List<Avis> avis;
+	private List<Avis> avis = new ArrayList<>();
 
 	//Un film est joue par pluseurs participants (acteurs) et les participants jouent dans plusieurs films
 	@ManyToMany(targetEntity = Participant.class,
-			cascade = CascadeType.ALL,
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE},
 			fetch = FetchType.LAZY
 	)
-	@JoinTable(name="film_acteur",
+	@JoinTable(name="film_acteurs",
 			joinColumns = {@JoinColumn(name="film_id")},
 			inverseJoinColumns = {@JoinColumn(name="participant_id")})
 	private List<Participant> acteurs;
 
 	//controle
 	public Film(String titre, int annee, int duree, String synopsis) {
-		super();
 		this.titre = titre;
 		this.annee = annee;
 		this.duree = duree;
@@ -74,7 +75,6 @@ public class Film {
 	}
 
 	public Film(long id, String titre, int annee, int duree, String synopsis) {
-		super();
 		this.id = id;
 		this.titre = titre;
 		this.annee = annee;
@@ -83,7 +83,6 @@ public class Film {
 	}
 	public Film(String titre, int annee, int duree, String synopsis, Participant realisateur, List<Participant> acteurs,
 			Genre genre, List<Avis> avis) {
-		super();
 		this.titre = titre;
 		this.annee = annee;
 		this.duree = duree;

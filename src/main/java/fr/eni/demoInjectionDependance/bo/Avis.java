@@ -8,12 +8,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Avis {
+public class Avis implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +34,6 @@ public class Avis {
 
 	//Contructeurs personalise
 	public Avis(int note, String commentaire, Film film, Membre membre) {
-		super();
 		this.note = note;
 		this.commentaire = commentaire;
 		this.film = film;

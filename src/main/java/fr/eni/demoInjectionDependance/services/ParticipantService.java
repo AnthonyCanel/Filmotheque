@@ -15,7 +15,7 @@ public class ParticipantService {
     //Le service sert a manipuler les systemes de bases de donnees
     //Differentes implementations permettraient par exemple de manipuler du JDBC / JPC / ROOM etc...
     //La couche DAO serait directement le systeme de gestion de la base.
-    //      JDBC => on fait toutes les requetes à la main
+    //      JDBC => on fait toutes les requetes a la main
     //      JPA => les annotations
     //      ROOM => d'autres annotations
     private ParticipantDao participantDao;

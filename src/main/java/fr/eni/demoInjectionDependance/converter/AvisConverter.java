@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.databind.util.Converter;
 
 import fr.eni.demoInjectionDependance.bo.Avis;
-import fr.eni.demoInjectionDependance.dal.Repository;
 
 @Component
 public class AvisConverter implements Converter<String, Avis>{

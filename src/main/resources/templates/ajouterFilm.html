@@ -76,8 +76,8 @@
 	</span>
 	
 	<br>
-	<label for="acteur">Acteur(s) :</label>
-	<select id="acteur" name="acteur" multiple="true" >
+	<label for="acteurs">Acteur(s) :</label>
+	<select id="acteurs" name="acteurs" multiple="true" >
 		<option th:each="participant : ${participants}" th:value="${participant.id}"><span th:text="${participant.nom}"></span></option>
 	</select>
 	<span class="help-block" th:if="${#fields.hasErrors('acteurs')}">

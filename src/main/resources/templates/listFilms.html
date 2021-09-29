@@ -15,25 +15,26 @@
     </thead>
     <tbody>
         <tr>
-        	<td>Réf</td>
             <td>Titre</td>
             <td>Année</td>
             <td>Durée</td>
             <td>Genre</td>
-            <td>Avis</td>
             <td>Synopsis</td>
           	<td>Réalisateur</td>
             <td>Acteurs</td>
         </tr>
         <tr th:each="film:${listFilm}" >
-                	<td>Réf</td>
-<!--         	<a th:href="@{/{film.id}}"> -->
         	<td th:text="${film.titre}"></td>
-<!--         	</a> -->
         	<td th:text="${film.annee}"></td>
         	<td th:text="${film.duree}"></td>
-        	<td th:text="${film.genre.libelle}"></td>
-            <td th:text="${film.avis}"></td>
+            <td th:text="${film.genre.libelle}"></td>
+            <td th:text="${film.synopsis}"></td>
+            <td th:text="${film.realisateur.nom}"></td>
+            <td >
+                <ul>
+                    <li th:each="acteur:${film.acteurs}" th:text="${acteur.nom}"></li>
+                </ul>
+            </td>
         </tr>
     </tbody>
 </table>
